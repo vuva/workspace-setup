@@ -18,19 +18,18 @@ Plugin 'gmarik/Vundle.vim'
 
 " add all your plugins here (note older versions of Vundle
 " used Bundle instead of Plugin)
-Plugin 'fatih/vim-go'
-"Plugin 'ycm-core/YouCompleteMe'
+
 Plugin 'neoclide/coc.nvim'
-" Plugin 'joshdick/onedark.vim'
-" Plugin 'tomasr/molokai'
 Plugin 'sickill/vim-monokai'
 Plugin 'scrooloose/nerdtree'
 Plugin 'itchyny/lightline.vim'
 Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/fzf'
-"Plugin 'mileszs/ack.vim'
 Plugin 'preservim/nerdcommenter'
 Plugin 'airblade/vim-gitgutter'
+
+"Plugin 'fatih/vim-go'
+
 " ...
 
 " All of your Plugins must be added before the following line
