@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo apt install -y vim ripgrep
+sudo apt install -y vim ripgrep screen
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 curl -sL install-node.now.sh/lts | sudo bash
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
