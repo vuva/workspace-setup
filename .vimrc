@@ -1,41 +1,34 @@
+" vim-plug 
+call plug#begin('~/.vim/plugged')
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'sickill/vim-monokai',
+Plug 'scrooloose/nerdtree',
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf.vim',
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'preservim/nerdcommenter',
+Plug 'airblade/vim-gitgutter',
+Plug 'liuchengxu/vista.vim'
+
+" For python
+" Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' },
+
+" For Golang
+" Plug 'josa42/coc-go'
+" Plug 'fatih/vim-go'
+
+
+" Initialize plugin system
+call plug#end()
+
 set encoding=utf-8
 set backspace=indent,eol,start
 set number
 syntax on
-
 set nocompatible              " required
 filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" add all your plugins here (note older versions of Vundle
-" used Bundle instead of Plugin)
-
-Plugin 'neoclide/coc.nvim'
-Plugin 'sickill/vim-monokai'
-Plugin 'scrooloose/nerdtree'
-Plugin 'itchyny/lightline.vim'
-Plugin 'junegunn/fzf.vim'
-Plugin 'junegunn/fzf'
-Plugin 'preservim/nerdcommenter'
-Plugin 'airblade/vim-gitgutter'
-
-"Plugin 'fatih/vim-go'
-
-" ...
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
 filetype plugin indent on    " required
-
 
 "map <C-n> :cnext<CR>
 "map <C-m> :cprevious<CR>
@@ -60,7 +53,7 @@ set foldlevel=99
 
 
 " Map Rg search to Ctrl-G
-nnoremap <C-h> :Rg<Cr>
+nnoremap <C-g> :Rg<Cr>
 "nnoremap <silent> <Leader>rg :Rg <C-R><C-W><CR>
 nnoremap <C-f> :Rg <C-R><C-W><CR>
 
