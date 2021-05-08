@@ -35,11 +35,14 @@ filetype plugin indent on    " required
 set foldmethod=indent
 set foldlevel=99
 
+" Hight cursor line
+set cursorline
+
 " Map delete one line to Ctrl-D
 noremap <C-d> "_dd
 
 " scrooloose/nerdtree config
-map <C-o> :NERDTreeToggle<CR>
+map <C-p> :NERDTreeToggle<CR>
 "autocmd vimenter * NERDTree
 filetype plugin on
 
