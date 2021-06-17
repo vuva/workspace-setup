@@ -6,7 +6,7 @@ Plug 'sickill/vim-monokai',
 Plug 'scrooloose/nerdtree',
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim',
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf', " { 'do': { -> fzf#install() } }
 Plug 'preservim/nerdcommenter',
 Plug 'airblade/vim-gitgutter',
 Plug 'liuchengxu/vista.vim'
