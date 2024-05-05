@@ -17,6 +17,13 @@ get_or_update() {
 	fi
 }
 
+cur_path=$(
+	exec 2>/dev/null
+	cd -- $(dirname "$0")
+	unset PWD
+	/usr/bin/pwd || /bin/pwd || pwd
+)
+
 echo "> Installing zsh ..."
 #https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH
 sudo apt update
@@ -36,8 +43,12 @@ if [ -d "$HOME/.oh-my-zsh" ]; then
 	echo "Oh My Zsh has been already installed."
 else
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-	ln -s ./zshrc ~/.zshrc
 fi
+
+echo -e "\n> Updating zshrc ..."
+cat ~/.zshrc >~/.zshrc.old
+rm ~/.zshrc
+ln -s $cur_path/zshrc ~/.zshrc
 
 echo -e "\n> Downloading Oh My Zsh plugins ..."
 get_or_update https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
