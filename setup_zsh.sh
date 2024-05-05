@@ -26,8 +26,26 @@ cur_path=$(
 
 echo "> Installing zsh ..."
 #https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH
-sudo apt update
-sudo apt install zsh thefuck fzf tmux
+# Check the system type
+if [[ "$(uname)" == "Darwin" ]]; then
+	# macOS
+	echo "Detected macOS. Installing with Homebrew..."
+	brew install zsh thefuck fzf tmux
+elif [[ "$(uname)" == "Linux" ]]; then
+	# Linux
+	if [ -x "$(command -v apt)" ]; then
+		# Ubuntu and Debian-based
+		echo "Detected Ubuntu or Debian-based system. Installing with apt..."
+		sudo apt update
+		sudo apt install zsh thefuck fzf tmux
+	else
+		echo "Unsupported Linux distribution. Please install manually."
+		exit 1
+	fi
+else
+	echo "Unsupported operating system. Please install manually."
+	exit 1
+fi
 zsh --version
 
 # Check if the default shell is Zsh or Bash
@@ -56,3 +74,4 @@ get_or_update https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUS
 get_or_update https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use
 
 echo -e "\n> Log out and log back in again."
+
