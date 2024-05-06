@@ -1,20 +1,23 @@
 #!/usr/bin/env bash
 
 # Define a function to check whether a folder exists
-get_or_update() {
-	# Accept folder path as argument
-	local git_path="$1"
-	local folder_path="$2"
 
-	# Check if the folder exists
-	if [ -d "$folder_path" ]; then
-		echo "Folder $2 exists. Updating ..."
-		cd $2
-		git pull
-	else
-		echo "Getting plugin $1"
-		git clone $1
-	fi
+# Define a function to check whether a folder exists
+get_or_update() {
+        # Accept folder path as argument
+        local git_path="$1"
+        local folder_path="$2"
+        echo "Downloading $git_path to $folder_path"
+
+        # Check if the folder exists
+        if [ -d "$folder_path" ]; then
+                echo "Folder $folder_path exists. Updating ..."
+                cd $folder_path
+                git pull
+        else
+                echo "Getting plugin $git_path"
+                git clone $git_path
+        fi
 }
 
 cur_path=$(
@@ -24,6 +27,7 @@ cur_path=$(
 	/usr/bin/pwd || /bin/pwd || pwd
 )
 
+#=======================================================
 echo "> Installing zsh ..."
 #https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH
 # Check the system type
