@@ -37,7 +37,7 @@ elif [[ "$(uname)" == "Linux" ]]; then
 		# Ubuntu and Debian-based
 		echo "Detected Ubuntu or Debian-based system. Installing with apt..."
 		sudo apt update
-		sudo apt install zsh thefuck fzf tmux
+		sudo apt install zsh thefuck fzf tmux -y
 	else
 		echo "Unsupported Linux distribution. Please install manually."
 		exit 1
@@ -48,13 +48,7 @@ else
 fi
 zsh --version
 
-# Check if the default shell is Zsh or Bash
-if [[ "$SHELL" != *zsh ]]; then
-	echo "Setting default shell to zsh ..."
-	chsh -s $(which zsh)
-else
-	echo "Default shell is already zsh."
-fi
+
 
 echo -e "\n> Installing Oh My Zsh ..."
 if [ -d "$HOME/.oh-my-zsh" ]; then
@@ -73,5 +67,12 @@ get_or_update https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.
 get_or_update https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 get_or_update https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use
 
-echo -e "\n> Log out and log back in again."
+# Check if the default shell is Zsh or Bash
+if [[ "$SHELL" != *zsh ]]; then
+	echo "Setting default shell to zsh ..."
+	chsh -s $(which zsh)
+else
+	echo "Default shell is already zsh."
+fi
 
+echo -e "\n> Log out and log back in again."
