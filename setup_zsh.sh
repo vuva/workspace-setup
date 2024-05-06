@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
 # Define a function to check whether a folder exists
-
-# Define a function to check whether a folder exists
 get_or_update() {
         # Accept folder path as argument
         local git_path="$1"
@@ -16,7 +14,7 @@ get_or_update() {
                 git pull
         else
                 echo "Getting plugin $git_path"
-                git clone $git_path
+                git clone $git_path $folder_path
         fi
 }
 
@@ -34,6 +32,7 @@ echo "> Installing zsh ..."
 if [[ "$(uname)" == "Darwin" ]]; then
 	# macOS
 	echo "Detected macOS. Installing with Homebrew..."
+	brew update
 	brew install zsh thefuck fzf tmux
 elif [[ "$(uname)" == "Linux" ]]; then
 	# Linux
@@ -61,15 +60,15 @@ else
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
-echo -e "\n> Updating zshrc ..."
-cat ~/.zshrc >~/.zshrc.old
-rm ~/.zshrc
-ln -s $cur_path/zshrc ~/.zshrc
-
 echo -e "\n> Downloading Oh My Zsh plugins ..."
 get_or_update https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 get_or_update https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 get_or_update https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use
+
+echo -e "\n> Updating zshrc ..."
+cat ~/.zshrc >~/.zshrc.old
+rm ~/.zshrc
+ln -s $cur_path/zshrc ~/.zshrc
 
 # Check if the default shell is Zsh or Bash
 if [[ "$SHELL" != *zsh ]]; then
