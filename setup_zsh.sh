@@ -40,7 +40,7 @@ elif [[ "$(uname)" == "Linux" ]]; then
 		# Ubuntu and Debian-based
 		echo "Detected Ubuntu or Debian-based system. Installing with apt..."
 		sudo apt update
-		sudo apt install zsh thefuck fzf tmux -y
+		sudo apt install zsh curl python3-dev python3-pip python3-setuptools thefuck fzf tmux -y
 	else
 		echo "Unsupported Linux distribution. Please install manually."
 		exit 1
