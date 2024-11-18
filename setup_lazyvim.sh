@@ -1,5 +1,5 @@
 sudo apt update
-sudo apt install xclip xsel ripgrep fd-find
+sudo apt install xclip xsel ripgrep fd-find npm
 sudo snap refresh
 sudo snap install nvim --classic
 
